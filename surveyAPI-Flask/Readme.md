@@ -1,0 +1,1 @@
+https://www.kaggle.com/code/rospel/basic-medical-info-a-key-to-predict-disease/
