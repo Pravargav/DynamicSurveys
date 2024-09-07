@@ -58,3 +58,27 @@ print("Accuracy Score:", ac)
 accuracies = cross_val_score(estimator=best_svc, X=X_train, y=y_train, cv=2)
 print("Cross-Validation Mean Accuracy:", accuracies.mean())
 print("Cross-Validation Standard Deviation:", accuracies.std())
+
+import numpy as np
+import joblib
+
+# Predict on the test set using the best SVC model
+y_pred_test = best_svc.predict(X_test)
+
+# Predict for a single row of data (first example)
+single_row_1 = np.array([[1, 0, 1, 0, 23, 0, 2, 2, 0]])
+y_pred_single_1 = best_svc.predict(single_row_1)
+print('Prediction for the single row (first example):', y_pred_single_1[0])
+
+# Predict for another single row of data (second example)
+single_row_2 = np.array([[1, 1, 1, 0, 154, 1, 2, 3, 1]])
+
+# Save the trained model to a file using joblib
+joblib.dump(best_svc, r'C:\Users\dell\surveyApi\pythonProject\modelx\model2x.pkl')
+
+# Load the model from the file
+loaded_model = joblib.load(r'C:\Users\dell\surveyApi\pythonProject\modelx\model2x.pkl')
+
+# Predict using the loaded model on the second single row
+y_pred_single_2 = loaded_model.predict(single_row_2)
+print('Prediction for the single row (second example):', y_pred_single_2[0])
